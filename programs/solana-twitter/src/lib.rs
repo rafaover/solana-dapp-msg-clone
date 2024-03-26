@@ -1,14 +1,21 @@
 use anchor_lang::prelude::*;
+use solana_program::entrypoint::ProgramResult;
 
 declare_id!("DhKx558vL1z4NhcPYVXnYKe9C5BJiqYtijDpVqFTArp3");
 
-// #[program]
-// pub mod solana_twitter {
-//     use super::*;
-//     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-//         Ok(())
-//     }
-// }
+#[program]
+pub mod solana_twitter {
+    use super::*;
+    pub fn send_tweet(
+      // SendTweet was used as generic type to link the context to this function
+      ctx: Context<SendTweet>,
+      // Extra arguments, only account cannot be used as argument here.
+      topic: String,
+      // This function returns a ProgramResult which can either be Ok or ProgramError
+      content: String) -> ProgramResult {
+        Ok(())
+    }
+}
 
 #[derive(Accounts)]
 pub struct SendTweet<'info> {
