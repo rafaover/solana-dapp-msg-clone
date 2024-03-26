@@ -13,6 +13,17 @@ pub mod solana_twitter {
       topic: String,
       // This function returns a ProgramResult which can either be Ok or ProgramError
       content: String) -> ProgramResult {
+        // & is used to access account by reference, it's like borrowing in Rust
+        let tweet: &mut Account<Tweet> = &mut ctx.accounts.tweet;
+        // Signer is used to guarantee that the account is owned by the author
+        let author: &Signer = &ctx.accounts.author;
+        let clock: Clock = Clock::get().unwrap();
+
+        tweet.author = *author.key;
+        tweet.timestamp = clock.unix_timestamp;
+        tweet.topic = topic;
+        tweet.content = content;
+
         Ok(())
     }
 }
