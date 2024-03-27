@@ -18,6 +18,9 @@ pub mod solana_twitter {
         topic: String,
         // This function returns a ProgramResult which can either be Ok or ProgramError
         content: String,
+        // Also I could use Result<()>, that would manage ErrorCode directly without conversion.
+        // If used, I could use the err! macro to return the error message.
+        // Ex: return err!(ErrorCode::ContentTooLong)
     ) -> ProgramResult {
         // & is used to access account by reference, it's like borrowing in Rust
         let tweet: &mut Account<Tweet> = &mut ctx.accounts.tweet;

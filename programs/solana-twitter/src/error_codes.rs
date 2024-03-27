@@ -10,7 +10,8 @@ pub enum ErrorCode {
 }
 
 
-// ProgramError conversion from ErrorCode
+// ProgramError conversion from ErrorCode to ProgramError
+// If used Result<()> instead of ProgramResult, this conversion would not be necessary
 impl From<ErrorCode> for ProgramError {
   fn from(error: ErrorCode) -> Self {
     match error {
