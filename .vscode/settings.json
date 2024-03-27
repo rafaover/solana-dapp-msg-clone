@@ -1,0 +1,3 @@
+{
+  "rust-analyzer.linkedProjects": ["./programs/solana-twitter/Cargo.toml", "./programs/solana-twitter/Cargo.toml"]
+}
